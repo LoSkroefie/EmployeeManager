@@ -1,0 +1,33 @@
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\bin\Debug\netcoreapp2.1\Employee Manager.deps.json
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\bin\Debug\netcoreapp2.1\Employee Manager.runtimeconfig.json
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\bin\Debug\netcoreapp2.1\Employee Manager.runtimeconfig.dev.json
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\bin\Debug\netcoreapp2.1\Employee Manager.dll
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\bin\Debug\netcoreapp2.1\Employee Manager.pdb
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\bin\Debug\netcoreapp2.1\Employee Manager.Views.dll
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\bin\Debug\netcoreapp2.1\Employee Manager.Views.pdb
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.csprojAssemblyReference.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.csproj.CoreCompileInputs.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.RazorAssemblyInfo.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.RazorAssemblyInfo.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.AssemblyInfoInputs.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.AssemblyInfo.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.TagHelpers.input.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.TagHelpers.output.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.RazorCoreGenerate.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.RazorTargetAssemblyInfo.cache
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.RazorTargetAssemblyInfo.cs
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.Views.pdb
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.dll
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.pdb
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Employee Manager.csproj.CopyComplete
+C:\Users\jvrso\source\repos\Employee Manager\Employee Manager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Login.g.cshtml.cs

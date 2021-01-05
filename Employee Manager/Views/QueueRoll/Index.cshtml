@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EmployeeManager.Models.QueueRollModel>
+@{
+    ViewData["Title"] = "Login";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<script type="text/javascript">
+
+
+
+    ShowAdd = function () {
+        
+        var child = window.open('/Queue/Add', "Add Queue", 'width=780px,height=600px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+    ShowEdit = function (QueueId) {
+       
+        var child = window.open('/Queue/Edit?id=' + QueueId, "Edit Queue", 'width=780px,height=600px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+ 
+
+    StopItem = function (RollId) {
+        $.post("QueueRoll/StopQueue", { id: RollId }, function (data) {
+            $("#row_" + RollId).hide();
+        });
+    }
+
+</script>
+
+<input type="button" id="btn_AddNew" value="Add Queue" onclick="ShowAdd();" />
+<hr />
+
+<table width="100%" border="1" class="table">
+    <tr>
+        <th>Queue ID</th>
+        <th>Assigned Employee</th>
+        <th>Task</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        @if (item.StopDate == DateTime.MinValue)
+        {
+            <tr id="row_@item.RollId">
+                <td>
+                    @item.RollId
+                </td>
+                <td>
+                    @item.QueueId
+                </td>
+                <td>
+                    <strong>@item.Employee.Name @item.Employee.Lastname</strong>
+                </td>
+                <td>
+                    (@item.Task.TaskId) <strong>@item.Task.Title</strong> <br />
+                    @item.Task.Description
+                </td>
+
+                <td>
+                    <input type="button" id="btnsto_@item.RollId" name="btnsto_@item.RollId" value="Stop Task" onclick="StopItem(@item.RollId);" />
+                    @*<input type="button" id="btn_@item.RollId" value="Edit Queue" onclick="ShowEdit(@item.RollId);" />*@
+                </td>
+            </tr>
+        }
+
+
+    }
+
+</table>
+
+

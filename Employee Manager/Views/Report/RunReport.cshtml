@@ -1,0 +1,171 @@
+﻿@model IEnumerable<EmployeeManager.Models.ReportModel>
+@{
+    ViewData["Title"] = "Employee Hours Worked Report";
+}
+
+
+<style>
+
+    #listtable {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #listtable td, #listtable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #listtable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #listtable tr:hover {
+            background-color: #ddd;
+        }
+
+        #listtable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button2 { /* Blue */
+        background-color: #008CBA;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button3 { /* Red */
+        background-color: red;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    div {
+        border-radius: 5px;
+    }
+</style>
+
+
+<table width="100%">
+    <tr>
+        <td>
+            <h3>@ViewData["Title"]</h3>
+            <strong>@ViewData["Message"]</strong>
+        </td>
+        <td align="right"></td>
+    </tr>
+</table>
+<hr />
+<table id="listtable" width="100%" border="0">
+    <tr>
+        <th>RollID</th>
+        <th>Employee</th>
+        <th>Task</th>
+        <th>Stop Date</th>
+        <th>Minutes</th>
+        <th>Rate</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                @item.RollId
+            </td>
+
+            <td>
+                @item.Employee.Fullname
+            </td>
+            <td>
+                @item.Task.Title
+            </td>
+            <td>
+
+                @item.StopDate
+            </td>
+
+            <td>
+                @item.Minutes
+            </td>
+            <td>
+                @item.Rate
+            </td>
+            <td>
+                @item.Total
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td></td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td></td>
+        <td></td>
+        <td>
+            @ViewData["GrandTotal"]
+        </td>
+    </tr>
+
+</table>
+<hr />

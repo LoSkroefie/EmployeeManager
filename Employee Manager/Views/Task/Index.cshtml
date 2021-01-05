@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EmployeeManager.Models.TaskModel>
+@{
+    ViewData["Title"] = "Task List";
+}
+<h2>@ViewData["Title"]</h2>
+
+
+<script type="text/javascript">
+
+    ShowAdd = function () {
+        window.open('/Task/Add', "Add Task", 'width=750px,height=600px,top=0,left=250');
+        setTimeout(function () {
+            window.location.reload(true);
+        }, 3000)
+    }
+
+
+    ShowEdit = function (idValue) {
+        window.open('/Task/Edit?id=' + idValue, "Edit Task", 'width=750px,height=600px,top=0,left=250');
+        setTimeout(function () {
+            window.location.reload(true);
+        }, 3000)
+    }
+
+</script>
+
+<input type="button" id="btn_AddNew" value="Add Task" onclick="ShowAdd();" />
+
+<hr />
+<table width="100%" border="1" class="table">
+    <tr>
+        <th>Task ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Start Date</th>
+        <th>Create Date</th>
+        <th>Complete Date</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                 @item.TaskId
+            </td>
+
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+
+                @item.Status
+            </td>
+
+            <td>
+                @item.StartDate
+            </td>
+            <td>
+                @item.DateCreated
+            </td>
+            <td>
+                @item.DateCompleted
+            </td>
+            <td>
+                <input type="button" id="btn_@item.TaskId" value="Edit Task" onclick="ShowEdit(@item.TaskId);" />
+            </td>
+        </tr>
+    }
+
+</table>
+
+

@@ -1,0 +1,77 @@
+﻿@model EmployeeManager.Models.QueueModel
+@{
+    ViewData["Title"] = "Edit Queued Task";
+}
+
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+</style>
+
+<table width="100%">
+    <tr>
+        <td>
+            <h3>@ViewData["Title"]</h3>
+            <strong>@ViewData["Message"]</strong>
+        </td>
+        <td></td>
+    </tr>
+</table>
+<hr />
+@using (Html.BeginForm("EditQueue", "Queue", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.QueueId);
+    <table width="100%" cellpadding="2" cellspacing="3">
+        <tr>
+            <td colspan="2">
+                <strong>Employee</strong><br />
+                @Html.DropDownListFor(m => m.EmployeeId, new SelectList(Model.Employees, "EmployeeId", "Fullname", Model.EmployeeId))
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <strong>Task</strong><br />
+                @Html.DropDownListFor(m => m.TaskId, new SelectList(Model.Tasks, "TaskId", "Title", Model.TaskId))
+            </td>
+        </tr>
+
+
+    </table>
+
+    <p>
+        <input type="submit" name="Submit" value="Save Queued Task">
+    </p>
+
+}
+
+
+
+
+
+
+
+

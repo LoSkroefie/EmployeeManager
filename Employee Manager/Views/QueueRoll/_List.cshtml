@@ -1,0 +1,231 @@
+﻿@model IEnumerable<EmployeeManager.Models.QueueRollModel>
+@{
+    ViewData["Title"] = "Manage Active Tasks";
+}
+
+
+<style>
+
+    #listtable {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #listtable td, #listtable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #listtable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #listtable tr:hover {
+            background-color: #ddd;
+        }
+
+        #listtable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button2 { /* Blue */
+        background-color: #008CBA;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button3 { /* Red */
+        background-color: red;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button4 { /* Orange */
+        background-color: darkorange;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+    div {
+        border-radius: 5px;
+    }
+</style>
+<script type="text/javascript">
+
+
+
+    ShowAdd = function () {
+        
+        var child = window.open('/Queue/Add', "Add Queue", 'width=780px,height=380px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+    ShowEdit = function (QueueId) {
+        
+        var child = window.open('/Queue/Edit?id=' + QueueId, "Edit Queue", 'width=780px,height=380px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+
+    StopItem = function (RollId) {
+    
+        
+        var child = window.open('/QueueRoll/StopQueue?id=' + RollId, "Stop Queued Task", 'width=100px,height=100px,top=150,left=150');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+
+    DeleteQueueRoll = function (RollId) {
+
+        var child = window.open('/QueueRoll/Delete?id=' + RollId, "Delete Queued task", 'width=100px,height=100px,top=125,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+</script>
+
+
+<table width="100%">
+    <tr>
+        <td>
+            <h3>@ViewData["Title"]</h3>
+            <strong>@ViewData["Message"]</strong>
+        </td>
+        <td align="right"></td>
+    </tr>
+</table>
+<hr />
+<table width="100%" border="0" id="listtable">
+    <tr>
+        <th>Roll ID</th>
+        <th>Queue ID</th>
+        <th>Assigned Employee</th>
+        <th>Task</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        @if (item.StopDate == DateTime.MinValue)
+        {
+            <tr id="row_@item.RollId">
+                <td>
+                    @item.RollId
+                </td>
+                <td>
+                    @item.QueueId
+                </td>
+                <td>
+                    <strong>@item.Employee.Fullname</strong>
+                </td>
+                <td>
+                    (@item.Task.TaskId) <strong>@item.Task.Title</strong> <br />
+                    @item.Task.Description
+                </td>
+
+                <td>
+                    <input type="button" class="button2" id="btnsto_@item.RollId" name="btnsto_@item.RollId" value="Stop Task" onclick="StopItem(@item.RollId);" />
+
+
+                    <input type="button" class="button3" id="btn_@item.RollId" value="Delete Active Task" onclick="DeleteQueueRoll(@item.RollId);" />
+
+                </td>
+            </tr>
+        }
+
+
+    }
+
+</table>
+
+

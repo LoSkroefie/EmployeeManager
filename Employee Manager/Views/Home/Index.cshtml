@@ -1,0 +1,141 @@
+﻿@model EmployeeManager.Models.HomeModel
+@{
+    ViewData["Title"] = "Employee Manager";
+}
+<style>
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button2 { /* Blue */
+        background-color: #008CBA;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    div {
+        border-radius: 5px;
+    }
+</style>
+
+@if (Model.EmployeeIsAdmin == true)
+{
+<table width="100%" border="0" cellspacing="5" cellpadding="3">
+    <tr>
+        <td>
+            <input type="button" style="width:95%" class="button" id="list_employees" name="list_employees" value="Manage Employees" onclick="ListEmployees();" />
+        </td>
+        <td>
+            <input type="button" style="width:95%" class="button" id="list_tasks" name="list_tasks" value="Manage Tasks" onclick="ListTasks();" />
+        </td>
+        <td><input type="button" style="width:95%" class="button" id="list_role" name="list_role" value="Manage Task Queue" onclick="ListQueues();" /></td>
+        <td><input type="button" style="width:95%" class="button" id="list_queueroll" name="list_queueroll" value="Manage Active Tasks" onclick="ListQueuesRoll();" /></td>
+        <td><input type="button" style="width:95%" class="button" id="show_reports" name="show_reports" value="Reports" onclick="ShowReports();" /></td>
+    </tr>
+</table>
+}
+else
+{
+<table width="100%" border="0" cellspacing="5" cellpadding="3">
+    <tr>
+        <td>
+           
+        </td>
+        <td>
+           
+        </td>
+        <td></td>
+        <td></td>
+        <td><input type="button" style="width:95%" class="button" id="show_reports" name="show_reports" value="Reports" onclick="ShowReports();" /></td>
+    </tr>
+</table>
+}
+
+
+<hr />
+
+    <table width="100%" cellspacing="5">
+        <tr>
+
+            <td width="50%" valign="top">
+                @{
+                    Html.RenderPartial("_AvailableTasks", Model.AvailableTasks);
+                }
+            </td>
+
+            <td width="50%" valign="top">
+                @{
+                    Html.RenderPartial("_ActiveTasks", Model.ActiveTasks);
+                }
+            </td>
+
+        </tr>
+    </table>

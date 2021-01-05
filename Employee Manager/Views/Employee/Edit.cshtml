@@ -1,0 +1,57 @@
+﻿@model EmployeeManager.Models.EmployeeModel
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<h3>@ViewData["ID"]</h3>
+
+@using (Html.BeginForm("EditEmployee", "Employee", FormMethod.Post))
+{
+    <p>
+        Employee ID<br>
+        @Html.TextBoxFor(m => m.EmployeeId)
+    </p>
+
+    <p>
+        First Name<br>
+        @Html.TextBoxFor(m => m.Name)
+    </p>
+    <p>
+        Last Name<br>
+        @Html.TextBoxFor(m => m.Lastname)
+    </p>
+    <p>
+        ID Number<br>
+        @Html.TextBoxFor(m => m.IDNumber)
+    </p>
+    <p>
+        Address<br>
+        @Html.TextAreaFor(m => m.Address)
+    </p>
+    <p>
+        Phone<br>
+        @Html.TextBoxFor(m => m.Phone)
+    </p>
+    <p>
+        Level<br>
+        @Html.TextBoxFor(m => m.Level)
+    </p>
+    <p>
+        Rate<br>
+        @Html.TextBoxFor(m => m.Rate)
+    </p>
+
+    <p>
+        <input type="submit" name="Submit" value="Save Employee">
+    </p>
+
+}
+
+
+
+
+
+
+
+

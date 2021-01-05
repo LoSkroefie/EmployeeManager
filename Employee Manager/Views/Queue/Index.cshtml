@@ -1,0 +1,94 @@
+﻿@model IEnumerable<EmployeeManager.Models.QueueModel>
+@{
+    ViewData["Title"] = "Login";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<script type="text/javascript">
+
+
+
+    ShowAdd = function () {
+        
+        var child = window.open('/Queue/Add', "Add Queue", 'width=780px,height=600px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+    ShowEdit = function (QueueId) {
+        
+        var child = window.open('/Queue/Edit?id=' + QueueId, "Edit Queue", 'width=780px,height=600px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+    StartQueue = function (QueueId) {
+       
+        var child = window.open('/Queue/StartQueue?id=' + QueueId, "Edit Queue", 'width=100px,height=100px,top=150,left=0');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+
+</script>
+
+    <input type="button" id="btn_AddNew" value="Add Queue" onclick="ShowAdd();" />
+    <hr />
+
+    <table width="100%" border="1" class="table">
+        <tr>
+            <th>Queue ID</th>
+            <th>Assigned Employee</th>
+            <th>Task</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+         
+                <tr id="row_@item.QueueId">
+                    <td>
+
+                        @item.QueueId
+                    </td>
+
+                    <td>
+                        (@item.Employee.EmployeeId) @item.Employee.Name @item.Employee.Lastname
+                    </td>
+                    <td>
+                        (@item.Task.TaskId) @item.Task.Title <br />
+                        @item.Task.Description
+                    </td>
+
+                    <td>
+                        <input type="button" id="btnsta_@item.QueueId" name="btnsta_@item.QueueId" value="Start Task" onclick="StartQueue(@item.QueueId);" />
+                        <input type="button" id="btn_@item.QueueId" value="Edit Task" onclick="ShowEdit(@item.QueueId);" />
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+

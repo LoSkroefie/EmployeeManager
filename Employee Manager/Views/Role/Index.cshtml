@@ -1,0 +1,72 @@
+﻿@model IEnumerable<EmployeeManager.Models.RoleModel>
+@{
+    ViewData["Title"] = "Login";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<script type="text/javascript">
+
+    ShowAdd = function () {
+        var child = window.open('/Role/Add', "Add Role", 'width=780px,height=600px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+    ShowEdit = function (RoleId) {
+        var child = window.open('/Role/Edit?id=' + RoleId, "Edit Role", 'width=780px,height=600px,top=0,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+</script>
+
+<input type="button" id="btn_AddNew" value="Add Role" onclick="ShowAdd();" />
+<hr />
+
+<table width="100%" border="1" class="table">
+    <tr>
+        <th>Role ID</th>
+        <th>Description</th>
+        <th>Rate</th>
+   
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                @item.RoleId
+            </td>
+
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.Rate
+            </td>
+           
+            <td>
+                <input type="button" id="btn_@item.RoleId" value="Edit Role" onclick="ShowEdit(@item.RoleId);" />
+            </td>
+        </tr>
+    }
+
+</table>
+
+

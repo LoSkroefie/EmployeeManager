@@ -1,0 +1,200 @@
+﻿@model IEnumerable<EmployeeManager.Models.TaskModel>
+@{
+    ViewData["Title"] = "Task List";
+}
+
+<style>
+
+    #listtable {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #listtable td, #listtable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #listtable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #listtable tr:hover {
+            background-color: #ddd;
+        }
+
+        #listtable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button2 { /* Blue */
+        background-color: #008CBA;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+
+    .button3 { /* Red */
+        background-color: red;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: inherit;
+    }
+    div {
+        border-radius: 5px;
+    }
+</style>
+<script type="text/javascript">
+
+    CreateTask = function () {
+        
+        var child = window.open('/Task/Add', "Create Task", 'width=780px,height=470px,top=150,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+    EditTask = function (idValue) {
+        
+        var child = window.open('/Task/Edit?id=' + idValue, "Edit Task", 'width=780px,height=480px,top=150,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+
+    DeleteTask = function (TaskId) {
+
+        var child = window.open('/Task/Delete?id=' + TaskId, "Edit Employee", 'width=100px,height=100px,top=125,left=250');
+        var timer = setInterval(checkChild, 500);
+
+        function checkChild() {
+            if (child.closed) {
+                window.location.reload(true);
+                clearInterval(timer);
+            }
+        }
+    }
+
+</script>
+
+
+
+<table width="100%">
+    <tr>
+        <td>
+            <h3>@ViewData["Title"]</h3>
+            <strong>@ViewData["Message"]</strong>
+        </td>
+        <td align="right"><input type="button" class="button" id="btn_AddNew" value="Add Task" onclick="CreateTask();" /></td>
+    </tr>
+</table>
+<hr />
+<table id="listtable" width="100%" border="0" class="table">
+    <tr>
+        <th>Task ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                @item.TaskId
+            </td>
+
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+
+                @item.Status
+            </td>
+
+      
+            <td>
+
+                @if (item.Status == "Created")
+                {
+                    <input type="button" class="button2" id="btn_@item.TaskId" value="Edit" onclick="EditTask(@item.TaskId);" />
+                    <input type="button" class="button3" id="btndel_@item.TaskId" value="Delete" onclick="DeleteTask(@item.TaskId);" />
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr />

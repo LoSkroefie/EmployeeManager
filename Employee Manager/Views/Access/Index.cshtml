@@ -1,0 +1,81 @@
+﻿@model EmployeeManager.Models.AccessModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+
+
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=password], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+
+</style>
+
+
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<h3>@ViewData["ID"]</h3>
+
+@using (Html.BeginForm("Index", "Access", FormMethod.Post))
+{
+
+
+    <div style="margin: 0 auto; width:50%;">
+        <table width="100%" cellpadding="2" cellspacing="3">
+            <tr>
+                <td colspan="2">
+                    <strong>@Html.LabelFor(m => m.Username)</strong><br />
+                    @Html.TextBoxFor(m => m.Username, new { htmlAttributes = new { @class = "form-control"
+                    } })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>@Html.LabelFor(m => m.Password)</strong><br />
+                    @Html.PasswordFor(m => m.Password, new { htmlAttributes = new { @class =
+                    "form-control" } })
+                </td>
+            </tr>
+
+        </table>
+
+        <p>
+            <input type="submit" name="Submit" value="Login">
+        </p>
+    </div>
+}
+

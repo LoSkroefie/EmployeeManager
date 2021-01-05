@@ -1,0 +1,118 @@
+﻿@model EmployeeManager.Models.TaskModel
+@{
+    ViewData["Title"] = "Create Task";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<h3>@ViewData["ID"]</h3>
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<script type="text/javascript">
+    $(function () {
+        $(".date-picker").datepicker({
+            dateFormat: 'dd-M-yy'
+        });
+
+    });
+
+</script>
+
+
+
+
+
+
+@using (Html.BeginForm("AddTask", "Task", FormMethod.Post))
+{
+    <table width="100%" cellpadding="2" cellspacing="5">
+
+        <tr>
+            <td width="23%">Title</td>
+            <td width="53%">@Html.TextBoxFor(m => m.Title,
+         new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>@Html.TextBoxFor(m => m.Status,
+         new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+        <tr>
+            <td>Create Date</td>
+            <td>
+                @Html.EditorFor(m => m.DateCreated,
+        new { htmlAttributes = new { @class = "form-control date-picker" } })
+            </td>
+        </tr>
+        <tr>
+            <td>Start Date</td>
+            <td>
+                @Html.EditorFor(m => m.StartDate,
+         new { htmlAttributes = new { @class = "form-control date-picker" } })
+            </td>
+        </tr>
+        <tr>
+            <td>Complete Date</td>
+            <td>
+                @Html.EditorFor(m => m.DateCompleted,
+         new { htmlAttributes = new { @class = "form-control date-picker" } })
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2">@Html.TextAreaFor(m => m.Description, 10, 100,
+         new { htmlAttributes = new { @class = "form-control" } })</td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" name="Submit" value="Save">
+    </p>
+
+}
+
+
