@@ -30,7 +30,7 @@ namespace EmployeeManager.Database
             {
                 if (Connection == null)
                 {
-                    string connstring = "Server=154.0.168.249; database=jvrsovfj_area51; UID=jvrsovfj_root; password=J@nn137812225034082; Connection Timeout=120";
+                    string connstring = "Removed for Security Purposes";
                     connection = new MySqlConnection(connstring);
 
                     connection.Open();
